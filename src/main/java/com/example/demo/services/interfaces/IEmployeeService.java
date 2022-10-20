@@ -1,13 +1,12 @@
 package com.example.demo.services.interfaces;
 
 import com.example.demo.controllers.dtos.request.CreateEmployeeRequest;
-import com.example.demo.controllers.dtos.responses.CreateEpmloyeeResponse;
+import com.example.demo.controllers.dtos.responses.CreateEmployeeResponse;
 
 import java.util.List;
 
-public interface IReservationService {
+public interface IEmployeeService {
     CreateEmployeeResponse create(CreateEmployeeRequest request);
-
     CreateEmployeeResponse get(Long id);
 
     List<CreateEmployeeResponse> list();
