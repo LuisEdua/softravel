@@ -5,9 +5,12 @@ import com.example.demo.controllers.dtos.responses.CreateEmployeeResponse;
 
 import java.util.List;
 
+<<<<<<< HEAD
 public interface IEpmloyeeService {
+=======
+public interface IEmployeeService {
+>>>>>>> 26fe7952684a3546ceee443eb85b024c6ab9956a
     CreateEmployeeResponse create(CreateEmployeeRequest request);
-
     CreateEmployeeResponse get(Long id);
 
     List<CreateEmployeeResponse> list();
