@@ -7,7 +7,7 @@ import com.example.demo.controllers.dtos.responses.CreateTicketResponse;
 
 import java.util.List;
 
-public interface IReservationService {
+public interface ITicketService {
     CreateTicketResponse create(CreateTicketRequest request);
 
     CreateTicketResponse get(Long id);
