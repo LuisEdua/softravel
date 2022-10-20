@@ -1,8 +1,6 @@
 package com.example.demo.services.interfaces;
 
-import com.example.demo.controllers.dtos.request.CreatePaymentRequest;
 import com.example.demo.controllers.dtos.request.CreateReservationRequest;
-import com.example.demo.controllers.dtos.responses.CreatePaymentResponse;
 import com.example.demo.controllers.dtos.responses.CreateReservationResponse;
 
 import java.util.List;
