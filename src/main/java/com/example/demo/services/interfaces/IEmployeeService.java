@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface IEmployeeService {
     CreateEmployeeResponse create(CreateEmployeeRequest request);
-
     CreateEmployeeResponse get(Long id);
 
     List<CreateEmployeeResponse> list();
