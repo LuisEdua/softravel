@@ -5,7 +5,7 @@ import com.example.demo.controllers.dtos.responses.CreateTypeOfTripResponse;
 
 import java.util.List;
 
-public interface ITypeOfTripnService {
+public interface ITypeOfTripService {
     CreateTypeOfTripResponse create(CreateTypeOfTripRequest request);
 
     CreateTypeOfTripResponse get(Long id);
