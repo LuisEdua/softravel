@@ -3,6 +3,7 @@ package com.example.demo.services;
 import com.example.demo.controllers.dtos.request.CreateClientRequest;
 import com.example.demo.controllers.dtos.responses.CreateClientResponse;
 import com.example.demo.entities.Client;
+import com.example.demo.entities.Employee;
 import com.example.demo.repositories.IClientRepository;
 import com.example.demo.services.interfaces.IClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,35 +13,35 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ClientServiceImpl implements IClientService {
+public class EmployeeServiceImpl implements IEmployeeService {
     @Autowired
-    private IClientRepository repository;
+    private IEmployeeRepository repository;
 
 
     @Override
-    public CreateClientResponse create(CreateClientRequest request) {
-        Client save = repository.save(from(request));
+    public CreateEmployeeResponse create(CreateEmployeeRequest request) {
+        Employee save = repository.save(from(request));
 
         return from(save);
     }
 
     @Override
-    public CreateClientResponse get(Long id) {
-        Client client = findAndEnsureExist(id);
-        return from(client);
+    public CreateEmployeeResponse get(Long id) {
+        Employee employee = findAndEnsureExist(id);
+        return from(employee);
     }
 
     @Override
-    public List<CreateClientResponse> list() {
+    public List<CreateEmployeeResponse> list() {
         return repository.findAll().stream()
                 .map(this::from)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public CreateClientResponse update(Long id, CreateClientRequest request) {
-        Client client = findAndEnsureExist(id);
-        client.setName(request.getName());
+    public CreateEmployeeResponse update(Long id, CreateEmployeeRequest request) {
+        Employee employee = findAndEnsureExist(id);
+        employee
         return from(repository.save(client));
     }
 
