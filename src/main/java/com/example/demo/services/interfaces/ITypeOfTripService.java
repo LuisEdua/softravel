@@ -12,7 +12,7 @@ public interface ITypeOfTripService {
 
     List<CreateTypeOfTripResponse> list();
 
-    CreateTicketResponse update(Long id, CreateTypeOfTripRequest request);
+    CreateTypeOfTripResponse update(Long id, CreateTypeOfTripRequest request);
 
     void delete(Long id);
 }
