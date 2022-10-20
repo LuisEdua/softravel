@@ -1,9 +1,17 @@
 package com.example.demo.services;
 
 import com.example.demo.controllers.dtos.request.CreateClientRequest;
+import com.example.demo.controllers.dtos.request.CreateEmployeeRequest;
 import com.example.demo.controllers.dtos.responses.CreateClientResponse;
+import com.example.demo.controllers.dtos.responses.CreateEmployeeResponse;
 import com.example.demo.entities.Client;
 import com.example.demo.entities.Employee;
+<<<<<<< HEAD
+import com.example.demo.repositories.IClientRepository;
+import com.example.demo.services.interfaces.IClientService;
+import com.example.demo.services.interfaces.IEmployeeService;
+=======
+>>>>>>> 26fe7952684a3546ceee443eb85b024c6ab9956a
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +22,6 @@ import java.util.stream.Collectors;
 public class EmployeeServiceImpl implements IEmployeeService {
     @Autowired
     private IEmployeeRepository repository;
-
-
     @Override
     public CreateEmployeeResponse create(CreateEmployeeRequest request) {
         Employee save = repository.save(from(request));
@@ -39,8 +45,11 @@ public class EmployeeServiceImpl implements IEmployeeService {
     @Override
     public CreateEmployeeResponse update(Long id, CreateEmployeeRequest request) {
         Employee employee = findAndEnsureExist(id);
-        employee
-        return from(repository.save(client));
+        employee.setName(request.getName());
+        employee.setOcupation(request.getOcupation());
+        employee.setAge(request.getAge());
+        employee.setTurn(request.getTurn());
+        return from(repository.save(employee));
     }
 
     @Override
@@ -48,26 +57,26 @@ public class EmployeeServiceImpl implements IEmployeeService {
         repository.delete(findAndEnsureExist(id));
     }
 
-    private Client from(CreateClientRequest request){
-        Client client = new Client();
-        client.setName(request.getName());
-        client.setLastname(request.getLastName());
-        client.setAge(request.getAge());
-        client.setCurp(request.getCurp());
-        return client;
+    private Employee from(CreateEmployeeRequest request){
+        Employee employee = new Employee();
+        employee.setName(request.getName());
+        employee.setOcupation(request.getOcupation());
+        employee.setAge(request.getAge());
+        employee.setTurn(request.getTurn());
+        return employee;
     }
 
-    private CreateClientResponse from(Client client){
-        CreateClientResponse response = new CreateClientResponse();
-        response.setId(client.getId());
-        response.setName(client.getName());
-        response.setLastName(client.getLastname());
-        response.setAge(client.getAge());
-        response.setCurp(client.getCurp());
+    private CreateEmployeeResponse from(Employee employee){
+        CreateEmployeeResponse response = new CreateEmployeeResponse();
+        response.setId(employee.getId());
+        response.setName(employee.getName());
+        response.setOcupation(employee.getOcupation());
+        response.setAge(employee.getAge());
+        response.setTurn(employee.getTurn());
         return response;
     }
 
-    private Client findAndEnsureExist(Long id){
+    private Employee findAndEnsureExist(Long id){
         return repository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
     }
     

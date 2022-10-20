@@ -1,13 +1,10 @@
 package com.example.demo.services;
 
 import com.example.demo.controllers.dtos.request.CreateClientRequest;
-import com.example.demo.controllers.dtos.request.CreateDestinationRequest;
 import com.example.demo.controllers.dtos.responses.CreateClientResponse;
-import com.example.demo.controllers.dtos.responses.CreateDestinationResponse;
 import com.example.demo.entities.Client;
-import com.example.demo.entities.Destination;
-import com.example.demo.repositories.IDestinationRepository;
-import com.example.demo.services.interfaces.IDestinationService;
+import com.example.demo.repositories.IClientRepository;
+import com.example.demo.services.interfaces.IClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,38 +12,36 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class DestinationServiceImpl implements IDestinationService {
+public class ClientServiceImpl implements IClientService {
     @Autowired
-    private IDestinationRepository repository;
+    private IClientRepository repository;
 
 
     @Override
-    public CreateDestinationResponse create(CreateDestinationRequest request) {
-        Destination save = repository.save(from(request));
+    public CreateClientResponse create(CreateClientRequest request) {
+        Client save = repository.save(from(request));
 
         return from(save);
     }
 
     @Override
-    public CreateDestinationResponse get(Long id) {
-        Destination destination = findAndEnsureExist(id);
-        return from(destination);
+    public CreateClientResponse get(Long id) {
+        Client client = findAndEnsureExist(id);
+        return from(client);
     }
 
     @Override
-    public List<CreateDestinationResponse> list() {
+    public List<CreateClientResponse> list() {
         return repository.findAll().stream()
                 .map(this::from)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public CreateDestinationResponse update(Long id, CreateDestinationRequest request) {
-        Destination destination = findAndEnsureExist(id);
-        destination.setState(request.getState());
-        destination.setCheckInTime(request.getCheckInTime());
-        destination.setPostalCode(request.getPostalCode());
-        return from(repository.save(destination));
+    public CreateClientResponse update(Long id, CreateClientRequest request) {
+        Client client = findAndEnsureExist(id);
+        client.setName(request.getName());
+        return from(repository.save(client));
     }
 
     @Override
@@ -54,24 +49,26 @@ public class DestinationServiceImpl implements IDestinationService {
         repository.delete(findAndEnsureExist(id));
     }
 
-    private Destination from(CreateDestinationRequest request){
-        Destination destination = new Destination();
-        destination.setState(request.getState());
-        destination.setCheckInTime(request.getCheckInTime());
-        destination.setPostalCode(request.getPostalCode());
-        return destination;
+    private Client from(CreateClientRequest request){
+        Client client = new Client();
+        client.setName(request.getName());
+        client.setLastname(request.getLastname());
+        client.setAge(request.getAge());
+        client.setCurp(request.getCurp());
+        return client;
     }
 
-    private CreateDestinationResponse from(Destination destination){
-        CreateDestinationResponse response = new CreateDestinationResponse();
-        response.setId(destination.getId());
-        destination.setState(destination.getState());
-        destination.setCheckInTime(destination.getCheckInTime());
-        destination.setPostalCode(destination.getPostalCode());
+    private CreateClientResponse from(Client client){
+        CreateClientResponse response = new CreateClientResponse();
+        response.setId(client.getId());
+        response.setName(client.getName());
+        response.setLastname(client.getLastname());
+        response.setAge(client.getAge());
+        response.setCurp(client.getCurp());
         return response;
     }
 
-    private Destination findAndEnsureExist(Long id){
+    private Client findAndEnsureExist(Long id){
         return repository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
     }
     
