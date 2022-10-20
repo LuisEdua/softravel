@@ -1,7 +1,7 @@
 package com.example.demo.services.interfaces;
 
 import com.example.demo.controllers.dtos.request.CreateEmployeeRequest;
-import com.example.demo.controllers.dtos.responses.CreateEpmloyeeResponse;
+import com.example.demo.controllers.dtos.responses.CreateEmployeeResponse;
 
 import java.util.List;
 
