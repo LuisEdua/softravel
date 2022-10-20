@@ -5,7 +5,7 @@ import com.example.demo.controllers.dtos.responses.CreateEpmloyeeResponse;
 
 import java.util.List;
 
-public interface IReservationService {
+public interface IEmployeeService {
     CreateEmployeeResponse create(CreateEmployeeRequest request);
 
     CreateEmployeeResponse get(Long id);
