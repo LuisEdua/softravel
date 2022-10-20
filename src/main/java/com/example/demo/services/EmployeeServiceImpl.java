@@ -6,12 +6,9 @@ import com.example.demo.controllers.dtos.responses.CreateClientResponse;
 import com.example.demo.controllers.dtos.responses.CreateEmployeeResponse;
 import com.example.demo.entities.Client;
 import com.example.demo.entities.Employee;
-<<<<<<< HEAD
-import com.example.demo.repositories.IClientRepository;
+import com.example.demo.repositories.IEmployeeRepository;
 import com.example.demo.services.interfaces.IClientService;
 import com.example.demo.services.interfaces.IEmployeeService;
-=======
->>>>>>> 26fe7952684a3546ceee443eb85b024c6ab9956a
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
