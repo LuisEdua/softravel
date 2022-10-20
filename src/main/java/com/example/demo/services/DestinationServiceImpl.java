@@ -12,35 +12,35 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ClientServiceImpl implements IClientService {
+public class DestinationServiceImpl implements IDestinationService {
     @Autowired
-    private IClientRepository repository;
+    private IDestinationRepository repository;
 
 
     @Override
-    public CreateClientResponse create(CreateClientRequest request) {
-        Client save = repository.save(from(request));
+    public CreateDestinationResponse create(CreateDestinationRequest request) {
+        Destination save = repository.save(from(request));
 
         return from(save);
     }
 
     @Override
-    public CreateClientResponse get(Long id) {
-        Client client = findAndEnsureExist(id);
-        return from(client);
+    public CreateDestinationResponse get(Long id) {
+        Destination destination = findAndEnsureExist(id);
+        return from(destination);
     }
 
     @Override
-    public List<CreateClientResponse> list() {
+    public List<CreateDestinationResponse> list() {
         return repository.findAll().stream()
                 .map(this::from)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public CreateClientResponse update(Long id, CreateClientRequest request) {
-        Client client = findAndEnsureExist(id);
-        client.setName(request.getName());
+    public CreateDestinationResponse update(Long id, CreateDestinationRequest request) {
+        Destination destination = findAndEnsureExist(id);
+        destination.set
         return from(repository.save(client));
     }
 
